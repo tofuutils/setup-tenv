@@ -1,0 +1,33 @@
+name: "tofuutils - Setup tenv"
+description: "Sets up tenv CLI in your GitHub Actions workflow."
+author: "tofuutils"
+inputs:
+  tenv_version:
+    description: ""
+    default: "latest"
+    required: false
+  tenv_wrapper:
+    description: "Whether or not to install a wrapper to wrap subsequent calls of the `tenv` binary and expose its STDOUT, STDERR, and exit code as outputs named `stdout`, `stderr`, and `exitcode` respectively. Defaults to `true`."
+    default: "true"
+    required: false
+  github_token:
+    description: "API token for GitHub to increase the rate limit. Defaults to the GITHUB_TOKEN environment variable unless running on Forgejo/Gitea."
+    default: ""
+    required: false
+outputs:
+  stdout:
+    description: "The STDOUT stream of the call to the `tenv` binary."
+    value: ""
+  stderr:
+    description: "The STDERR stream of the call to the `tenv` binary."
+    value: "Wrapper was not activated"
+  exitcode:
+    description: "The exit code of the call to the `tenv` binary."
+    value: "126"
+
+branding:
+  icon: "box"
+  color: "yellow"
+runs:
+  using: "node20"
+  main: "dist/index.js"
