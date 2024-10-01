@@ -20,10 +20,12 @@ class Release {
   constructor (releaseMeta) {
     this.version = releaseMeta.tag_name.replace('v', '');
     this.builds = releaseMeta.assets.map(asset => new Build(asset.name, asset.browser_download_url));
+    console.log(this.builds);
   }
 
   getBuild (platform, arch) {
     const requiredName = `tenv_v${this.version}_${platform}_${arch}.zip`;
+    console.log(requiredName);
     return this.builds.find(build => build.name === requiredName);
   }
 }
