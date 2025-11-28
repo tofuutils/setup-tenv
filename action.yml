@@ -17,17 +17,14 @@ inputs:
 outputs:
   stdout:
     description: "The STDOUT stream of the call to the `tenv` binary."
-    value: ""
   stderr:
     description: "The STDERR stream of the call to the `tenv` binary."
-    value: "Wrapper was not activated"
   exitcode:
     description: "The exit code of the call to the `tenv` binary."
-    value: "126"
 
 branding:
   icon: "box"
   color: "yellow"
 runs:
-  using: "node20"
+  using: "node24"
   main: "dist/index.js"
