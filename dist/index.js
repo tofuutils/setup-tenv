@@ -27,6 +27,7 @@ class Release {
   getBuild (platform, arch) {
     let fileExtension = 'tar.gz';
     if (os.platform().startsWith('win')) fileExtension = 'zip';
+    if (arch === 'amd64') arch = 'x86_64';
 
     const requiredName = `tenv_v${this.version}_${platform}_${arch}.${fileExtension}`;
     console.log(requiredName);
